@@ -3,7 +3,7 @@
 // =====================================================
 
 const GOOGLE_SCRIPT_URL =
-    "PASTE_URL_GOOGLE_APPS_SCRIPT_KAMU";
+    "https://script.google.com/macros/s/AKfycbzaMuGjiJAZLE8PunoaNDXjDi5wuCAtLSARHmoL92MzTUrF5V7as6AVs4fXZvEhCLwB/exec";
 
 
 // =====================================================
