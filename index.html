@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Jadwal Piket MBG</title>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+        <div class="logo">
+            🍱
+            <span>MBG Piket</span>
+        </div>
+
+        <nav>
+            <a href="#" class="active" onclick="showPage('dashboard')">
+                🏠 Dashboard
+            </a>
+
+            <a href="#" onclick="showPage('jadwal')">
+                📅 Jadwal Piket
+            </a>
+
+            <a href="#" onclick="showPage('petugas')">
+                👨‍🎓 Petugas
+            </a>
+        </nav>
+    </aside>
+
+
+    <!-- MAIN -->
+    <main class="main">
+
+        <!-- NAVBAR -->
+        <header class="navbar">
+            <div>
+                <h2>Jadwal Piket Mengambil MBG</h2>
+                <p>Manajemen jadwal pengambilan makanan bergizi gratis</p>
+            </div>
+
+            <div class="user">
+                👤 Admin
+            </div>
+        </header>
+
+
+        <!-- DASHBOARD -->
+        <section id="dashboard" class="page">
+
+            <div class="welcome">
+                <div>
+                    <h1>Selamat Datang 👋</h1>
+                    <p>
+                        Kelola jadwal piket pengambilan MBG dengan mudah.
+                    </p>
+                </div>
+
+                <div class="date" id="currentDate"></div>
+            </div>
+
+
+            <!-- STATISTIK -->
+            <div class="stats">
+
+                <div class="card">
+                    <div class="icon blue">📅</div>
+                    <div>
+                        <p>Total Jadwal</p>
+                        <h2 id="totalJadwal">0</h2>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="icon orange">⏳</div>
+                    <div>
+                        <p>Belum Diambil</p>
+                        <h2 id="belumDiambil">0</h2>
+                    </div>
+                </div>
+
+                <div class="card">
+                    <div class="icon green">✅</div>
+                    <div>
+                        <p>Sudah Diambil</p>
+                        <h2 id="sudahDiambil">0</h2>
+                    </div>
+                </div>
+
+            </div>
+
+
+            <!-- JADWAL HARI INI -->
+            <div class="content-box">
+
+                <div class="box-header">
+                    <div>
+                        <h2>Jadwal Piket</h2>
+                        <p>Daftar petugas pengambilan MBG</p>
+                    </div>
+
+                    <button class="btn-primary" onclick="openModal()">
+                        + Tambah Jadwal
+                    </button>
+                </div>
+
+
+                <div class="table-container">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Kelas</th>
+                                <th>Hari</th>
+                                <th>Tanggal</th>
+                                <th>Jam</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="jadwalTable">
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HALAMAN JADWAL -->
+        <section id="jadwal" class="page hidden">
+
+            <div class="content-box">
+
+                <div class="box-header">
+                    <div>
+                        <h2>📅 Jadwal Piket</h2>
+                        <p>Kelola jadwal pengambilan MBG</p>
+                    </div>
+
+                    <button class="btn-primary" onclick="openModal()">
+                        + Tambah Jadwal
+                    </button>
+                </div>
+
+                <div class="table-container">
+
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>No</th>
+                                <th>Nama</th>
+                                <th>Kelas</th>
+                                <th>Hari</th>
+                                <th>Tanggal</th>
+                                <th>Jam</th>
+                                <th>Status</th>
+                                <th>Aksi</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="jadwalTable2">
+                        </tbody>
+                    </table>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- HALAMAN PETUGAS -->
+        <section id="petugas" class="page hidden">
+
+            <div class="content-box">
+
+                <div class="box-header">
+                    <div>
+                        <h2>👨‍🎓 Data Petugas</h2>
+                        <p>Daftar siswa yang bertugas mengambil MBG</p>
+                    </div>
+                </div>
+
+                <div class="petugas-list">
+
+                    <div class="student">
+                        <span>👨‍🎓</span>
+                        <div>
+                            <strong>Ahmad</strong>
+                            <small>XI RPL 1</small>
+                        </div>
+                    </div>
+
+                    <div class="student">
+                        <span>👨‍🎓</span>
+                        <div>
+                            <strong>Budi</strong>
+                            <small>XI RPL 1</small>
+                        </div>
+                    </div>
+
+                    <div class="student">
+                        <span>👩‍🎓</span>
+                        <div>
+                            <strong>Citra</strong>
+                            <small>XI RPL 2</small>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- MODAL TAMBAH JADWAL -->
+
+    <div class="modal" id="modal">
+
+        <div class="modal-box">
+
+            <div class="modal-header">
+                <h2>Tambah Jadwal Piket</h2>
+
+                <button onclick="closeModal()">×</button>
+            </div>
+
+            <form id="jadwalForm">
+
+                <label>Nama Petugas</label>
+                <input
+                    type="text"
+                    id="nama"
+                    placeholder="Masukkan nama"
+                    required
+                >
+
+                <label>Kelas</label>
+                <input
+                    type="text"
+                    id="kelas"
+                    placeholder="Contoh: XI RPL 1"
+                    required
+                >
+
+                <label>Hari</label>
+                <select id="hari" required>
+                    <option value="">Pilih Hari</option>
+                    <option>Senin</option>
+                    <option>Selasa</option>
+                    <option>Rabu</option>
+                    <option>Kamis</option>
+                    <option>Jumat</option>
+                    <option>Sabtu</option>
+                </select>
+
+                <label>Tanggal</label>
+                <input
+                    type="date"
+                    id="tanggal"
+                    required
+                >
+
+                <label>Jam</label>
+                <input
+                    type="time"
+                    id="jam"
+                    required
+                >
+
+                <button type="submit" class="btn-primary full">
+                    Simpan Jadwal
+                </button>
+
+            </form>
+
+        </div>
+
+    </div>
+
+
+    <script src="script.js"></script>
+
+</body>
+</html>
